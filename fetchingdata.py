@@ -7,13 +7,13 @@ matplotlib.use('Agg') ## use this if we want to save the figures in file explore
 import numpy as np
 import pandas_ta as ta
 # Define the stock symbol and date range
-symbol = "IRFC.NS"  # Example: Apple Inc.
-start_date = "2021-02-08"
+symbol = "INFY.BO"  # Example: Apple Inc.
+start_date = "2000-02-08"
 end_date = "2023-09-21"
 
 # Fetch historical data
-#data = yf.download(symbol, start=start_date, end=end_date)
-data = pd.read_csv('data.csv')
+data = yf.download(symbol, start=start_date, end=end_date)
+data = pd.read_csv('INFY.BO.csv')
 print(data.head())
 
 # Check the first few rows of the dataset
@@ -129,3 +129,7 @@ print("R-squared (R2) Score:", r2)
 # Optionally, you can use the trained model to make predictions on new data
 # new_data = ...  # Prepare new data for prediction
 # new_predictions = model.predict(new_data)
+########## saving and dumping the model ########
+import pickle
+# Save the model
+pickle.dump(model, open('infosys.pkl', 'wb'))
