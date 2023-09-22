@@ -87,10 +87,46 @@ plt.grid(True)
 plt.show()
 plt.savefig('daily_return.png')
 print(data.head())
-
+data_cleaned = data.dropna(axis=1)
+data_cleaned = data.dropna()
+print(data_cleaned.head(100))
+#data_cleaned = data.drop(data.columns[7], axis=1)
+data= data_cleaned
+# print(data.head())
 ###############################stage 3##############################
 ###ML model####
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
+# Choose features (X) and target variable (y)
+print(data.head())
+features = ['Adj Close', 'Daily_Return', 'High', 'Low', 'Volume']
+X = data[features]
+y = data['Close']
+
+# Split the data into training and testing sets (e.g., 80% train, 20% test)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Build and train a linear regression model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Make predictions on the test data
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+rmse = mean_squared_error(y_test, y_pred, squared=False)
+r2 = r2_score(y_test, y_pred)
+
+print("Mean Absolute Error:", mae)
+print("Mean Squared Error:", mse)
+print("Root Mean Squared Error:", rmse)
+print("R-squared (R2) Score:", r2)
+
+# Optionally, you can use the trained model to make predictions on new data
+# new_data = ...  # Prepare new data for prediction
+# new_predictions = model.predict(new_data)
+print(data.head())
