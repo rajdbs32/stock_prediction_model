@@ -101,7 +101,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 # Choose features (X) and target variable (y)
 print(data.head())
-features = ['Adj Close', 'Daily_Return', 'High', 'Low', 'Volume']
+features = ['Adj Close', 'High', 'Low', 'Volume','Open']
 X = data[features]
 y = data['Close']
 
