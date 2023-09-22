@@ -101,7 +101,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 # Choose features (X) and target variable (y)
 print(data.head())
-features = ['Adj Close', 'Daily_Return', 'High', 'Low', 'Volume']
+features = ['Adj Close', 'Daily_Return', 'High', 'Low', 'Volume', 'RSI_14', 'BBL_20_2.0', 'BBM_20_2.0', 'BBU_20_2.0']
 X = data[features]
 y = data['Close']
 
@@ -129,4 +129,3 @@ print("R-squared (R2) Score:", r2)
 # Optionally, you can use the trained model to make predictions on new data
 # new_data = ...  # Prepare new data for prediction
 # new_predictions = model.predict(new_data)
-print(data.head())
