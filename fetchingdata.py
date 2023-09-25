@@ -101,9 +101,9 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 # Choose features (X) and target variable (y)
 print(data.head())
-features = ['Adj Close', 'High', 'Low', 'Volume','Open']
+features = ['Adj Close', 'Close', 'Low', 'Volume','Open']
 X = data[features]
-y = data['Close']
+y = data['High']
 
 # Split the data into training and testing sets (e.g., 80% train, 20% test)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
